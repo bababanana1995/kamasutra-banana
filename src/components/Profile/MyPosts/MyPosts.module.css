@@ -1,0 +1,14 @@
+.pole_vvoda {
+    width: 300px;
+    border-radius: 10px;
+    resize: none;
+
+}
+
+.knopka {
+
+    border-radius: 30px;
+}
+.post_h {
+    margin: 30px;
+}

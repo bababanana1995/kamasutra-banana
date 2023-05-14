@@ -1,0 +1,41 @@
+.Nav {
+    width: 360px;
+}
+.logo{
+    margin:15px 0 20px 160px ;
+    max-width: 45px;
+    max-height: 35px;
+}
+.box_item{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    align-items: start;
+
+}
+.item {
+    /*margin-top: 50px;*/
+    /*margin-bottom: 35px  ;*/
+    display: flex;
+    font-family: 'Helvetica Neue',"Times New Roman";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    /*align-items: center;*/
+    letter-spacing: -0.015em;
+}
+.Nav div img{
+    margin:0 21px 21px 116px;
+    width: 23px;
+    height: 21px;
+}
+
+
+.active {
+    color: #000000;
+}
+
+.item :hover {
+    color: #8a8989;
+}

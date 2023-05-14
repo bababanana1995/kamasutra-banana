@@ -1,0 +1,19 @@
+.name_users {
+    padding-left: 15px;
+}
+.dialogs {
+    width: 100%;
+    display: flex;
+}
+
+.messages {
+    padding-left: 150px;
+    padding-top: 30px;
+}
+
+.dialogs_content {
+    padding: 30px 0;
+    font-size: 30px;
+}
+
+
