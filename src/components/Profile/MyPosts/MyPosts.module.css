@@ -1,14 +1,26 @@
+.position_posts{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.position{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
 .pole_vvoda {
+    margin-bottom: 30px;
     width: 300px;
     border-radius: 10px;
     resize: none;
-
 }
 
 .knopka {
-
     border-radius: 30px;
+    width: 70px;
+    height: 40px;
 }
 .post_h {
     margin: 30px;
+
 }
