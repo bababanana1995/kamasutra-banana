@@ -6,7 +6,7 @@ type Propstype = {
     message: string
 }
 export const Message: React.FC<Propstype> = (props) => {
-debugger
+
     return (
         <div className={s.message}>{props.message}</div>
     )

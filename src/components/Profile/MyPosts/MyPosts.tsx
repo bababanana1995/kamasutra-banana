@@ -1,27 +1,32 @@
-import React from 'react'
+import React, {ChangeEvent} from 'react'
 import s from './MyPosts.module.css'
 import Post from './MyPost/Post'
+import {PostDataType} from "../../Redux/reducers/postReducer";
 
-const MyPosts = () => {
-    let postData = [
-        {id: 1, name: 'Danya', post: 'i am here', likes: 10},
-        {id: 3, name: 'Toma', post: 'i am been here', likes: 50},
-        {id: 2, name: 'Dima', post: 'i am not here', likes: 20},
+type MyPostsType = {
+    addPost: () => void
+    onChangeUpdateNewPostTExt: (text: string) => void
+    posts: PostDataType[]
+    NewPostText: string
+}
+export const MyPosts = (props: MyPostsType) => {
+    const addPostButtonHandler = () => {
+        props.addPost()
+    }
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        props.onChangeUpdateNewPostTExt(e.currentTarget.value)
+    }
+    const PostsElement = props.posts
+        .map(post => <Post key={post.id} name={post.name} message={post.post} like={post.likes}/>)
+    return <div className={s.position_posts}>
+        <div className={s.post_h}><h1>My post</h1></div>
+        <div className={s.position}>
 
-    ]
-
-    const PostsElement = postData.map( post =><Post name={post.name} message={post.post} like={post.likes}/> )
-
-    return (
-        <div>
-        <div className={s.position_posts}>
-            <div className={s.post_h}><h1>My post</h1></div>
-            <textarea className={s.pole_vvoda}></textarea>
-            <button className={s.knopka}>Жмяк и всё</button>
+            <input onChange={onChangeHandler} value={props.NewPostText} type="text"/>
+            <button onClick={addPostButtonHandler} className={s.knopka}>Жмяк</button>
         </div>
-            {PostsElement}
-        </div>
+        {PostsElement}
+    </div>
 
-)
 }
 export default MyPosts

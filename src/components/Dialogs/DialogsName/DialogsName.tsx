@@ -1,37 +1,22 @@
-// @ts-ignore
-
 import React from 'react'
 import s from './../Dialogs.module.css'
 import {NavLink} from "react-router-dom";
-
-
+import {DialogsDataType} from "../../Redux/reducers/messageReducer";
 type NameUsersPropsType = {
-    name: PropsType[]
-}
-type PropsType = {
-    id:number,
-    name:string
+    DialogsData: DialogsDataType[]
 }
 export const NameUsers: React.FC<NameUsersPropsType> = (props) => {
-
-    let dialogsElement = props.name.map(el => <DialogItem name={el.name} id={el.id}/>)
-
-
+    let dialogsElement = props.DialogsData.map(el => <DialogItem key={el.id} name={el.name} id={el.id}/>)
     return (
         <div className={s.name_users}>{dialogsElement}</div>
     )
 }
-type dialogsDataPropsType ={
-    id:number;
-    name:string;
-}
+type dialogsDataPropsType = DialogsDataType
 const DialogItem = (props:dialogsDataPropsType) => {
     let path = "NameUsers" +  props.id
-    return (
-        <div className={s.dialogs_content}>
+    return <div className={s.dialogs_content}>
             <NavLink to={path}>{props.name}</NavLink>
         </div>
-    )
 }
 
 
