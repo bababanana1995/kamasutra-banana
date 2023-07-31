@@ -1,15 +1,18 @@
 import React from 'react';
 import './index.css';
-import {StateType, store} from "./components/Redux/State";
 import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
+import {AppRootStateType, store} from "./components/Redux/storeRedux";
+import {Provider} from "react-redux";
 
-export let rerenderEntireTree = (state:StateType) => {
+export let rerenderEntireTree = (state:AppRootStateType) => {
 
     ReactDOM.render(
         <BrowserRouter>
-            <App updateNewPostText={store.updateNewPostText.bind(store)} addMessage={store.addMessage.bind(store)} addPosts={store.addPosts.bind(store)} state={state}/>
+                <Provider store={store}>
+                    <App/>
+                </Provider>
         </BrowserRouter>,
         document.getElementById('root')
     );
@@ -18,4 +21,7 @@ export let rerenderEntireTree = (state:StateType) => {
 }
 rerenderEntireTree(store.getState());
 
-store.subscribe(rerenderEntireTree)
+store.subscribe(()=> {
+    let state = store.getState()
+    rerenderEntireTree(state)
+})

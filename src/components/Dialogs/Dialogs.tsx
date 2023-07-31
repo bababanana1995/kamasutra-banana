@@ -2,18 +2,22 @@ import React from 'react'
 import s from './Dialogs.module.css'
 import {NameUsers} from "./DialogsName/DialogsName";
 import {MyMessages} from "./MyMessages/MyMessages";
-import {StateType} from "../Redux/State";
+import {MessagePageType} from "../Redux/reducers/messageReducer";
 
 type DialogsType={
-    stateMessage:StateType
-    addMessage:(textMessage:string)=>void
+    onChangeText:(messageText:string)=>void
+    onAddMessage:()=>void
+    state:MessagePageType
 }
 export const Dialogs = (props:DialogsType) => {
+    let DialogsData = props.state.DialogsData
+    let newMessageText= props.state.newMessageText
+    let stateMessageMess = props.state.MessageData
 
     return (
         <div className={s.dialogs}>
-            <NameUsers stateMessageUser={props.stateMessage}/>
-            <MyMessages addMessage={props.addMessage} stateMessageMess={props.stateMessage}/>
+            <NameUsers DialogsData={DialogsData}/>
+            <MyMessages onChangeText={props.onChangeText} onAddMessage={props.onAddMessage} newMessageText={newMessageText} stateMessageMess={stateMessageMess} />
         </div>
 
     )
