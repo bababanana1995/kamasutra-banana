@@ -1,22 +1,28 @@
-import React from 'react'
+import React, {ChangeEvent} from 'react'
 import s from '../Dialogs.module.css'
 import {Message} from "./MyMessage/Message";
-import {StateType} from "../../Redux/State";
+import {MessageType} from "../../Redux/reducers/messageReducer";
 
 type MessagesType = {
-    stateMessageMess: StateType
-    addMessage:(textMessage:string)=>void
+    onChangeText:(messageText:string)=>void
+    newMessageText:string
+    stateMessageMess:MessageType[]
+    onAddMessage:()=>void
 }
+
 export const MyMessages: React.FC<MessagesType> = (props) => {
-    let stateMassage = React.createRef<HTMLInputElement>()
-    const addMessage = () => {
-        let textMessage = stateMassage.current
-        textMessage && props.addMessage(textMessage.value)
-        stateMassage.current && (stateMassage.current.value = '')
+    // let newMessageText = props.stateMessageMess.newMessageText
+    const changeTextHandler=(e:ChangeEvent<HTMLInputElement>)=>{
+        let messageText = e.currentTarget.value
+        props.onChangeText(messageText)
     }
-    let messageElement = props.stateMessageMess.MessagePage.MessageData.map(mess => <Message key={mess.id} message={mess.message}/>)
+    const addMessage = () => {
+        props.onAddMessage()
+        // props.dispatch(AddMessageAC())
+    }
+    let messageElement = props.stateMessageMess.map(mess => <Message key={mess.id} message={mess.message}/>)
     return <div className={s.messages}>
-            <input ref={stateMassage} type="text"/>
+            <input onChange={changeTextHandler} value={props.newMessageText} type="text"/>
             <button onClick={addMessage}>жмульк</button>
             {messageElement}
         </div>
