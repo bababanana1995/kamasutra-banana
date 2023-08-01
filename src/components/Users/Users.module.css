@@ -1,0 +1,46 @@
+.userContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:600px;
+    margin: 40px 0;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 30px;
+    background: #2D3E49;
+}
+.userAva{
+    width: 200px;
+    height: 200px;
+    border-radius: 30px;
+
+}
+.avatarBlock{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.avatarBlock button{
+    width: 200px;
+    height: 40px;
+    border-radius: 15px;
+    font-size: 20px;
+}
+.userInfoBlock{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    height:90px;
+    padding: 10px;
+    border-radius: 30px;
+    border: 1px solid black;
+}
+.userInfoBlockElements{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+}
