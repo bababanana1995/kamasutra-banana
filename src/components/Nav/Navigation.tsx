@@ -17,6 +17,10 @@ export const Navigation = () => {
                     <NavLink exact activeClassName='is-active' to="/Dialogs">Dialogs</NavLink>
                 </div>
                 <div className={s.item}>
+                    <img src="https://img.icons8.com/badges/48/speech-bubble.png" alt="speech-bubble"/>
+                    <NavLink exact activeClassName='is-active' to="/Users">Users</NavLink>
+                </div>
+                <div className={s.item}>
                     <img src="https://img.icons8.com/badges/48/news.png" alt="news"/>
                     <NavLink exact activeClassName='is-active' to="/News">News</NavLink>
                 </div>

@@ -1,4 +1,5 @@
 import {v1} from "uuid";
+import Post from "../../Profile/MyPosts/MyPost/Post";
 
 type AddPostActionType = ReturnType<typeof AddPostAC>
 type UpdateNewMessageTextActionType = ReturnType<typeof updateNewPostTextAC>
@@ -26,13 +27,10 @@ export const postReducer = (state: ProfilePageType = initialState, action: Actio
     switch (action.type) {
         case "ADD-POST": {
             let newPost: PostDataType = {id: v1(), name: 'Danya', post: state.NewPostText, likes: 0}
-            state.PostData.unshift(newPost)
-            state.NewPostText = ''
-            return state
+            return {...state,PostData:[newPost,...state.PostData],NewPostText: ''}
         }
         case "UPDATE-NEW-POST-TEXT": {
-            state.NewPostText = action.newText
-            return state
+            return {...state,NewPostText: action.newText}
         }
         default:
             return state
