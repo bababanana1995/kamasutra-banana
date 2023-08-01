@@ -7,9 +7,8 @@ import {Music} from "./components/Music/Music";
 import {Navigation} from "./components/Nav/Navigation";
 import {PhotosBlock} from "./components/Fotos/PhotosBlock";
 import {Settings} from "./components/Settings/Settings";
-import {Dialogs} from "./components/Dialogs/Dialogs";
-import {AppRootStateType} from "./components/Redux/storeRedux";
 import {SuperDialogsContainer} from "./components/Dialogs/DialogsContainer";
+import {UsersContainer} from "./components/Users/UsersContainer";
 
 type AppType = {
     // state: AppRootStateType
@@ -29,12 +28,13 @@ function App(props: AppType) {
 
                     <Route path='/Profile' render={() => <Profile/>}/>
                     <Route path='/Dialogs' render={() => <SuperDialogsContainer/>}/>
+                    <Route path='/Users' render={() => <UsersContainer/>}/>
 
                     <Route path='/Music' component={Music}/>
                     <Route path='/Settings' component={Settings}/>
                 </div>
                 <div className='app-wrapper-Photos-block'>
-                    <PhotosBlock/>
+                    {/*<PhotosBlock/>*/}
                 </div>
             </div>
         </div>

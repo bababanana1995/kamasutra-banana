@@ -43,14 +43,10 @@ export const messageReducer = (state = initialState, action: MessageActionType) 
     switch (action.type) {
         case "ADD-MESSAGE": {
             const newMessage: MessageType = {id: v1(), message: state.newMessageText}
-            state.MessageData.unshift(newMessage)
-             state.newMessageText = ''
-            return state
-
+            return {...state,MessageData:[newMessage,...state.MessageData],newMessageText:''}
         }
         case "UPDATE-NEW-MESSAGE-TEXT": {
-             state.newMessageText = action.message
-            return state
+            return {...state,newMessageText: action.message}
         }
         default:
             return state
