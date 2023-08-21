@@ -28,7 +28,8 @@ function App(props: AppType) {
 
                     <Route path='/Profile' render={() => <Profile/>}/>
                     <Route path='/Dialogs' render={() => <SuperDialogsContainer/>}/>
-                    <Route path='/Users' render={() => <UsersContainer/>}/>
+                    {/*@ts-ignore*/}
+                    <Route  path='/Users' render={() => <UsersContainer />}/>
 
                     <Route path='/Music' component={Music}/>
                     <Route path='/Settings' component={Settings}/>
