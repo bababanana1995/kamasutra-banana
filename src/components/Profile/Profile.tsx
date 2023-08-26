@@ -1,13 +1,15 @@
 import React from 'react'
 import s from './Profile.module.css'
-import ProfileInfo from "./Profile_info/Profile_info";
 import {SuperMyPostsContainer} from "./MyPosts/MyPostsContainer";
-import {PhotosBlock} from "../Fotos/PhotosBlock";
+import {ProfileType} from "../Redux/reducers/profile-Reducer";
+import ProfileInfo from "./Profile_info/Profile_info";
 
-type ProfileType = {}
-export const Profile = (props: ProfileType) => {
+type ProfilePropsType = {
+    profile:ProfileType
+}
+export const Profile = (props: ProfilePropsType) => {
     return <div className={s.main_content}>
-        <ProfileInfo/>
+        <ProfileInfo profile={props.profile}/>
         <div className={s.block_Info_Nav}>
             <SuperMyPostsContainer />
             {/*<PhotosBlock/>*/}

@@ -1,5 +1,5 @@
 import {combineReducers, legacy_createStore} from "redux";
-import {postReducer, ProfilePageType} from "./reducers/postReducer";
+import {profileReducer, ProfilePageType} from "./reducers/profile-Reducer";
 import {MessagePageType, messageReducer} from "./reducers/messageReducer";
 import {userReducer} from "./reducers/usersReducer";
 
@@ -8,7 +8,7 @@ export type StateType = {
     MessagePage: MessagePageType
 }
 let rootReducer = combineReducers({
-    ProfilePage: postReducer,
+    ProfilePage: profileReducer,
     MessagePage: messageReducer,
     UsersPage: userReducer
 })

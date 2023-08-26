@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./Users.module.css";
 import {UserType} from "../Redux/reducers/usersReducer";
+import {NavLink} from "react-router-dom";
 
 
 export type UsersPropsType = {
@@ -13,7 +14,7 @@ export type UsersPropsType = {
 }
 export const Users = (props: UsersPropsType) => {
 
-    let pageCount = Math.ceil(props.totalUsersCount / props.pageSize)
+    // let pageCount = Math.ceil(props.totalUsersCount / props.pageSize)
     let pages = []
     // for (let i = 1;  i < 10; i++) {
     for (let i = 1; i <= 10; i++) {
@@ -24,9 +25,9 @@ export const Users = (props: UsersPropsType) => {
     }
     return (<div>
             <div className={style.pages}>
-                {pages.map(p => {
+                {pages.map((p,key) => {
                     return (
-                        <span className={
+                        <span key={key} className={
                             props.currentPage === p
                                 ? style.selectedPage
                                 : ''
@@ -44,9 +45,13 @@ export const Users = (props: UsersPropsType) => {
             {props.users.map(user => {
                     return <div key={user.id} className={style.userContainer}>
                         <div className={style.avatarBlock}>
-                            <div><img
-                                src={user.photos.small ? user.photos.small : 'https://sun6-22.userapi.com/s/v1/if1/lisZ84X2jtluYVwToJ2AiBd_9roDLRNxPSiS6D1ZruvmfCO2NUgGOVgzEDaie6qkziWlaA.jpg?size=1272x1287&quality=96&crop=57,22,1272,1287&ava=1'}
-                                alt="ava" className={style.userAva}/></div>
+                            <div>
+                                <NavLink exact to={'/Profile/' + user.id}>
+                                    <img
+                                    src={user.photos.small ? user.photos.small : 'https://sun6-22.userapi.com/s/v1/if1/lisZ84X2jtluYVwToJ2AiBd_9roDLRNxPSiS6D1ZruvmfCO2NUgGOVgzEDaie6qkziWlaA.jpg?size=1272x1287&quality=96&crop=57,22,1272,1287&ava=1'}
+                                    alt="ava" className={style.userAva}/>
+                                </NavLink>
+                            </div>
                             <button
                                 onClick={() => changeFollow(user.id)}>{user.followed ? 'Follow' : 'UnFollow'}</button>
                         </div>

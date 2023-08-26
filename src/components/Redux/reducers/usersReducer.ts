@@ -3,9 +3,15 @@ import Post from "../../Profile/MyPosts/MyPost/Post";
 
 type FollowUnfollowType = ReturnType<typeof followUnfollowAC>
 type SetUsersActionType = ReturnType<typeof setUsersAC>
-type setCurrentPageActionType = ReturnType<typeof setCurrentPageAC>
-type setTotalUsersCountActionType = ReturnType<typeof setTotalUsersCountAC>
-export type ActionPostType = FollowUnfollowType | SetUsersActionType | setCurrentPageActionType | setTotalUsersCountActionType
+type SetCurrentPageActionType = ReturnType<typeof setCurrentPageAC>
+type SetTotalUsersCountActionType = ReturnType<typeof setTotalUsersCountAC>
+type ToggleLoaderUserActionType = ReturnType<typeof toggleLoaderUserAC>
+export type ActionPostType =
+    | FollowUnfollowType
+    | SetUsersActionType
+    | SetCurrentPageActionType
+    | SetTotalUsersCountActionType
+    | ToggleLoaderUserActionType
 type Location = {
     country: string
     city: string
@@ -26,7 +32,8 @@ export type UsersType = {
     users: UserType[]
     pageSize:number
     totalUsersCount:number
-    currentPage:number
+    currentPage:number,
+    isFetching:boolean
 }
 
 let initialState: UsersType = {
@@ -41,8 +48,8 @@ let initialState: UsersType = {
     users: [],
     pageSize:10,
     totalUsersCount:0,
-    currentPage:1
-    // NewPostText: ''
+    currentPage:1,
+    isFetching:false
 }
 
 export const userReducer = (state: UsersType = initialState, action: ActionPostType): UsersType => {
@@ -59,6 +66,9 @@ export const userReducer = (state: UsersType = initialState, action: ActionPostT
         }
         case "SET-TOTAL-USERS-COUNT":{
             return  {...state, totalUsersCount:action.totalCount}
+        }
+        case "TOGGLE-USER":{
+            return {...state, isFetching:action.isFetching}
         }
         default:
             return state
@@ -87,5 +97,11 @@ export const setTotalUsersCountAC = (totalCount: number) => {
     return {
         type: 'SET-TOTAL-USERS-COUNT',
         totalCount
+    } as const
+}
+export const toggleLoaderUserAC = (isFetching: boolean) => {
+    return {
+        type: 'TOGGLE-USER',
+        isFetching
     } as const
 }

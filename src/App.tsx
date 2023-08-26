@@ -2,13 +2,12 @@ import React from 'react';
 import './App.css';
 
 import {Route} from "react-router-dom";
-import {Profile} from "./components/Profile/Profile";
 import {Music} from "./components/Music/Music";
 import {Navigation} from "./components/Nav/Navigation";
-import {PhotosBlock} from "./components/Fotos/PhotosBlock";
 import {Settings} from "./components/Settings/Settings";
 import {SuperDialogsContainer} from "./components/Dialogs/DialogsContainer";
 import {UsersContainer} from "./components/Users/UsersContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 type AppType = {
     // state: AppRootStateType
@@ -25,10 +24,11 @@ function App(props: AppType) {
                 </div>
                 <div className="app-wrapper-content">
                     <Route path='/Music' component={Music}/>
-
-                    <Route path='/Profile' render={() => <Profile/>}/>
+                    {/*@ts-ignore*/}
+                    <Route path='/Profile' render={() => <ProfileContainer/>}/>
                     <Route path='/Dialogs' render={() => <SuperDialogsContainer/>}/>
                     {/*@ts-ignore*/}
+
                     <Route  path='/Users' render={() => <UsersContainer />}/>
 
                     <Route path='/Music' component={Music}/>
