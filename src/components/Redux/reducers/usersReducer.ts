@@ -48,7 +48,7 @@ let initialState: UsersType = {
     users: [],
     pageSize:10,
     totalUsersCount:0,
-    currentPage:1,
+    currentPage:30,
     isFetching:false
 }
 

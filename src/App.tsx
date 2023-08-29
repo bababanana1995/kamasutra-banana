@@ -25,7 +25,7 @@ function App(props: AppType) {
                 <div className="app-wrapper-content">
                     <Route path='/Music' component={Music}/>
                     {/*@ts-ignore*/}
-                    <Route path='/Profile' render={() => <ProfileContainer/>}/>
+                    <Route path='/Profile/:userId?' render={() => <ProfileContainer/>}/>
                     <Route path='/Dialogs' render={() => <SuperDialogsContainer/>}/>
                     {/*@ts-ignore*/}
 
