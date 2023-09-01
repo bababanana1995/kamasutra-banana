@@ -30,10 +30,10 @@ export type UserType = {
 }
 export type UsersType = {
     users: UserType[]
-    pageSize:number
-    totalUsersCount:number
-    currentPage:number,
-    isFetching:boolean
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number,
+    isFetching: boolean
 }
 
 let initialState: UsersType = {
@@ -46,10 +46,10 @@ let initialState: UsersType = {
     //         fullName: 'Dima', comment: 'i am not here',location:{country:'Belarus',city:'Minsk'}, follow: true},
     // ],
     users: [],
-    pageSize:10,
-    totalUsersCount:0,
-    currentPage:30,
-    isFetching:false
+    pageSize: 10,
+    totalUsersCount: 0,
+    currentPage: 30,
+    isFetching: false
 }
 
 export const userReducer = (state: UsersType = initialState, action: ActionPostType): UsersType => {
@@ -61,14 +61,14 @@ export const userReducer = (state: UsersType = initialState, action: ActionPostT
         case "SET-USERS": {
             return {...state, users: action.users}
         }
-        case "SET-CURRENT-PAGE":{
-            return {...state, currentPage:action.currentPage}
+        case "SET-CURRENT-PAGE": {
+            return {...state, currentPage: action.currentPage}
         }
-        case "SET-TOTAL-USERS-COUNT":{
-            return  {...state, totalUsersCount:action.totalCount}
+        case "SET-TOTAL-USERS-COUNT": {
+            return {...state, totalUsersCount: action.totalCount}
         }
-        case "TOGGLE-USER":{
-            return {...state, isFetching:action.isFetching}
+        case "TOGGLE-USER": {
+            return {...state, isFetching: action.isFetching}
         }
         default:
             return state
