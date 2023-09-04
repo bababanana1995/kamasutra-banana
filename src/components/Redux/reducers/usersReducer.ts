@@ -37,14 +37,6 @@ export type UsersType = {
 }
 
 let initialState: UsersType = {
-    // users: [
-    //     {id: v1(),ava:'https://sun6-22.userapi.com/s/v1/if1/lisZ84X2jtluYVwToJ2AiBd_9roDLRNxPSiS6D1ZruvmfCO2NUgGOVgzEDaie6qkziWlaA.jpg?size=1272x1287&quality=96&crop=57,22,1272,1287&ava=1',
-    //         fullName: 'Danya', comment: 'i am here',location:{country:'Russia',city:'Omsk'}, follow: true},
-    //     {id: v1(),ava:'https://sun6-22.userapi.com/s/v1/if1/lisZ84X2jtluYVwToJ2AiBd_9roDLRNxPSiS6D1ZruvmfCO2NUgGOVgzEDaie6qkziWlaA.jpg?size=1272x1287&quality=96&crop=57,22,1272,1287&ava=1',
-    //         fullName: 'Toma', comment: 'i am been here',location:{country:'Russia',city:'Moscow'}, follow: false},
-    //     {id: v1(),ava:'https://sun6-22.userapi.com/s/v1/if1/lisZ84X2jtluYVwToJ2AiBd_9roDLRNxPSiS6D1ZruvmfCO2NUgGOVgzEDaie6qkziWlaA.jpg?size=1272x1287&quality=96&crop=57,22,1272,1287&ava=1',
-    //         fullName: 'Dima', comment: 'i am not here',location:{country:'Belarus',city:'Minsk'}, follow: true},
-    // ],
     users: [],
     pageSize: 10,
     totalUsersCount: 0,

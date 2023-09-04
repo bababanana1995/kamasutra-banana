@@ -13,7 +13,7 @@ import {
 } from "../Redux/reducers/usersReducer";
 import {Preloader} from "../common/Preloader";
 
-class UsersConteiner extends React.Component<PropsType> {
+class UserContainer extends React.Component<PropsType> {
     componentDidMount() {
         this.props.toggleLoaderUser(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
@@ -51,8 +51,6 @@ class UsersConteiner extends React.Component<PropsType> {
         </>
     }
 }
-
-
 type MapStateToPropsType = {
     users: UserType[]
     pageSize: number
@@ -60,13 +58,6 @@ type MapStateToPropsType = {
     currentPage: number
     isFetching: boolean
 }
-// type MapDispatchPropsType = {
-//     onChangeFollow: (userID: string) => void
-//     setUsers: (users: UserType[]) => void
-//     setCurrentPage: (currentPage: number) => void
-//     setTotalUsersCount: (totalCount: number) => void
-//     toggleLoaderUser: (isFetching: boolean) => void
-// }
 type MapDispatchPropsType = {
     onChangeFollow: (userID: string) => void
     setUsers: (users: UserType[]) => void
@@ -86,26 +77,6 @@ let mapStateToProps = (state: AppRootStateType) => {
         isFetching: state.UsersPage.isFetching
     }
 }
-// let mapDispatchToProps = (dispatch: any) => {
-//     return {
-//         onChangeFollow: (userID: string) => {
-//             dispatch(followUnfollowAC(userID))
-//         },
-//         setUsers: (users: UserType[]) => {
-//             dispatch(setUsersAC(users))
-//         },
-//         setTotalUsersCount: (totalCount: number) => {
-//             dispatch(setTotalUsersCountAC(totalCount))
-//         },
-//         setCurrentPage: (currentPage: number) => {
-//             dispatch(setCurrentPageAC(currentPage))
-//         },
-//         toggleLoaderUser: (isFetching: boolean) => {
-//             dispatch(toggleLoaderUserAC(isFetching))
-//         }
-//     }
-// }
-// export const UsersContainer = connect<MapStateToPropsType, MapDispatchPropsType, OwnPropsType, AppRootStateType>(mapStateToProps, mapDispatchToProps)(UsersConteiner)
 export const UsersContainer = connect<MapStateToPropsType, MapDispatchPropsType, OwnPropsType, AppRootStateType>(mapStateToProps,
     {
         onChangeFollow: followUnfollowAC,
@@ -115,4 +86,4 @@ export const UsersContainer = connect<MapStateToPropsType, MapDispatchPropsType,
         toggleLoaderUser: toggleLoaderUserAC,
     }
     //@ts-ignore
-    )(UsersConteiner)
+    )(UserContainer)

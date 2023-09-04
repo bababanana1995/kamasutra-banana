@@ -8,6 +8,8 @@ import {Settings} from "./components/Settings/Settings";
 import {SuperDialogsContainer} from "./components/Dialogs/DialogsContainer";
 import {UsersContainer} from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import {Header} from "./components/Header/Header";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 type AppType = {
     // state: AppRootStateType
@@ -35,6 +37,9 @@ function App(props: AppType) {
                     <Route path='/Settings' component={Settings}/>
                 </div>
                 <div className='app-wrapper-Photos-block'>
+                    {/*@ts-ignore*/}
+                    <HeaderContainer/>
+
                     {/*<PhotosBlock/>*/}
                 </div>
             </div>
