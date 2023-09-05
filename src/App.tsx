@@ -38,8 +38,6 @@ function App(props: AppType) {
                 <div className='app-wrapper-Photos-block'>
                     {/*@ts-ignore*/}
                     <HeaderContainer/>
-
-                    {/*<PhotosBlock/>*/}
                 </div>
             </div>
         </div>
