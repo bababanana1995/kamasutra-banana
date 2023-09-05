@@ -1,7 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import style from "./Users.module.css";
 import {UserType} from "../Redux/reducers/usersReducer";
 import {NavLink} from "react-router-dom";
+import axios from "axios";
+import {log} from "util";
+import {findAllByDisplayValue} from "@testing-library/react";
+import Popup from "./popUpUser";
+import {usersAPI} from "../api";
 
 
 export type UsersPropsType = {
@@ -13,19 +18,32 @@ export type UsersPropsType = {
     onPageChanged: (pageNumber: number) => void
 }
 export const Users = (props: UsersPropsType) => {
-
-    // let pageCount = Math.ceil(props.totalUsersCount / props.pageSize)
     let pages = []
-    // for (let i = 1;  i < 10; i++) {
     for (let i = 1; i <= 10; i++) {
         pages.push(i)
     }
-    let changeFollow = (id: string) => {
-        props.onChangeFollow(id)
+    let changeFollow = (id: string, followed:boolean) => {
+        if (!followed) {
+            {
+                    usersAPI.followUsers(id)
+                    .then(res => {
+                        if(res.data.resultCode === 0)
+                        props.onChangeFollow(id)
+                    })
+            }
+        } else {
+            {
+                usersAPI.unFollowUsers(id)
+                    .then(res => {
+                        if(res.data.resultCode === 0)
+                            props.onChangeFollow(id)
+                    })
+            }
+        }
     }
     return (<div>
             <div className={style.pages}>
-                {pages.map((p,key) => {
+                {pages.map((p, key) => {
                     return (
                         <span key={key} className={
                             props.currentPage === p
@@ -41,19 +59,23 @@ export const Users = (props: UsersPropsType) => {
                 })}
 
             </div>
-            {/*<button onClick={this.getUsers}>getUsers</button>*/}
             {props.users.map(user => {
                     return <div key={user.id} className={style.userContainer}>
                         <div className={style.avatarBlock}>
                             <div>
                                 <NavLink exact to={'/Profile/' + user.id}>
                                     <img
-                                    src={user.photos.small ? user.photos.small : 'https://sun6-22.userapi.com/s/v1/if1/lisZ84X2jtluYVwToJ2AiBd_9roDLRNxPSiS6D1ZruvmfCO2NUgGOVgzEDaie6qkziWlaA.jpg?size=1272x1287&quality=96&crop=57,22,1272,1287&ava=1'}
-                                    alt="ava" className={style.userAva}/>
+                                        src={user.photos.small ? user.photos.small : 'https://sun6-22.userapi.com/s/v1/if1/lisZ84X2jtluYVwToJ2AiBd_9roDLRNxPSiS6D1ZruvmfCO2NUgGOVgzEDaie6qkziWlaA.jpg?size=1272x1287&quality=96&crop=57,22,1272,1287&ava=1'}
+                                        alt="ava" className={style.userAva}/>
                                 </NavLink>
                             </div>
-                            <button
-                                onClick={() => changeFollow(user.id)}>{user.followed ? 'Follow' : 'UnFollow'}</button>
+                            <div>
+                                <button
+                                    onClick={() => changeFollow(user.id, user.followed)}>{!user.followed
+                                    ?
+                                    'Follow?'
+                                    : 'UnFollow?'}</button>
+                            </div>
                         </div>
                         <div className={style.userInfoBlock}>
                             <div className={style.userInfoBlockElements}>

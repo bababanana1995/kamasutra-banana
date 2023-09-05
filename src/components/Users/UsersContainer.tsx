@@ -12,15 +12,19 @@ import {
     UserType
 } from "../Redux/reducers/usersReducer";
 import {Preloader} from "../common/Preloader";
+import {usersAPI} from "../api";
 
 class UserContainer extends React.Component<PropsType> {
     componentDidMount() {
         this.props.toggleLoaderUser(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-            .then(res => {
+        // axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,{
+        //     withCredentials:true
+        // })
+            usersAPI.getUsers(this.props.currentPage,this.props.pageSize)
+            .then(data => {
                 this.props.toggleLoaderUser(false)
-                this.props.setUsers(res.data.items);
-                this.props.setTotalUsersCount(res.data.totalCount)
+                this.props.setUsers(data.items);
+                this.props.setTotalUsersCount(data.totalCount)
             })
     }
 
@@ -28,7 +32,8 @@ class UserContainer extends React.Component<PropsType> {
         this.props.toggleLoaderUser(true)
 
         this.props.setCurrentPage(pageNumber)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`,{
+            withCredentials:true})
             .then(res => {
                 this.props.toggleLoaderUser(false)
 
