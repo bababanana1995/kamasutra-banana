@@ -1,6 +1,3 @@
-import {v1} from "uuid";
-import Post from "../../Profile/MyPosts/MyPost/Post";
-
 type FollowUnfollowType = ReturnType<typeof followUnfollowAC>
 type SetUsersActionType = ReturnType<typeof setUsersAC>
 type SetCurrentPageActionType = ReturnType<typeof setCurrentPageAC>

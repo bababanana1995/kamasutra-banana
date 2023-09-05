@@ -17,9 +17,6 @@ import {usersAPI} from "../api";
 class UserContainer extends React.Component<PropsType> {
     componentDidMount() {
         this.props.toggleLoaderUser(true)
-        // axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,{
-        //     withCredentials:true
-        // })
             usersAPI.getUsers(this.props.currentPage,this.props.pageSize)
             .then(data => {
                 this.props.toggleLoaderUser(false)
@@ -30,7 +27,6 @@ class UserContainer extends React.Component<PropsType> {
 
     onPageChanged = (pageNumber: number) => {
         this.props.toggleLoaderUser(true)
-
         this.props.setCurrentPage(pageNumber)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`,{
             withCredentials:true})

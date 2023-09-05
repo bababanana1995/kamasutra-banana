@@ -6,7 +6,6 @@ const instance = axios.create({
     headers: {
         "API-KEY": '2b5765e8-28c5-48fc-8550-7dcfd79b4d1b'
     },
-
 })
 export const usersAPI ={
     getUsers (currentPage: number = 1, pageSize: number = 10) {

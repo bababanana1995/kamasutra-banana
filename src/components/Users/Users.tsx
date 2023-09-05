@@ -1,11 +1,7 @@
-import React, {useState} from "react";
+import React from "react";
 import style from "./Users.module.css";
 import {UserType} from "../Redux/reducers/usersReducer";
 import {NavLink} from "react-router-dom";
-import axios from "axios";
-import {log} from "util";
-import {findAllByDisplayValue} from "@testing-library/react";
-import Popup from "./popUpUser";
 import {usersAPI} from "../api";
 
 

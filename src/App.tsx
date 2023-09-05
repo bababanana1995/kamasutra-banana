@@ -8,7 +8,6 @@ import {Settings} from "./components/Settings/Settings";
 import {SuperDialogsContainer} from "./components/Dialogs/DialogsContainer";
 import {UsersContainer} from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
-import {Header} from "./components/Header/Header";
 import HeaderContainer from "./components/Header/HeaderContainer";
 
 type AppType = {
